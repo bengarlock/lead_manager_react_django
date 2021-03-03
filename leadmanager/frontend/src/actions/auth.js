@@ -18,7 +18,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get('/api/auth/user', tokenConfig(getState))
+    .get('https://www.bengarlock.com:6328/api/auth/user', tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: USER_LOADED,
@@ -46,7 +46,7 @@ export const login = (username, password) => (dispatch) => {
   const body = JSON.stringify({ username, password });
 
   axios
-    .post('/api/auth/login', body, config)
+    .post('https://www.bengarlock.com:6328/api/auth/login', body, config)
     .then((res) => {
       dispatch({
         type: LOGIN_SUCCESS,
@@ -74,7 +74,7 @@ export const register = ({ username, password, email }) => (dispatch) => {
   const body = JSON.stringify({ username, email, password });
 
   axios
-    .post('/api/auth/register', body, config)
+    .post('https://www.bengarlock.com:6328/api/auth/register', body, config)
     .then((res) => {
       dispatch({
         type: REGISTER_SUCCESS,
@@ -92,7 +92,7 @@ export const register = ({ username, password, email }) => (dispatch) => {
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
   axios
-    .post('/api/auth/logout/', null, tokenConfig(getState))
+    .post('https://www.bengarlock.com:6328/api/auth/logout/', null, tokenConfig(getState))
     .then((res) => {
       dispatch({ type: 'CLEAR_LEADS' });
       dispatch({
